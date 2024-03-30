@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
+      - echo 'Install phase'
+
+  pre_build:
+    commands:
+      - echo 'Pre-build phase'
+      - mvn clean install -f pom.xml
+
+  build:
+    commands:
+      - echo 'Build phase'
+
+  post_build:
+    commands:
+      - echo 'Post-build phase'
+
+artifacts:
+  files:
+    - '**/*.war'
+
+cache:
+  paths:
+    - '$HOME/.m2/repository'
